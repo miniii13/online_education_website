@@ -1,0 +1,169 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+<section class="about">
+
+    <div class="row">
+ 
+       <div class="image">
+          <img src="{% static 'icons_image/CONTACT_NO_BG.png' %}" alt="">
+       </div>
+ 
+       <div class="content">
+          <h3>Why Choose Us?</h3>
+          <p>We're giving you the best content after finding out everywhere and also it's free of cost!!</p>
+          <a href="{% url 'course' %}" class="inline-btn">Our Courses</a>
+       </div>
+ 
+    </div>
+ 
+    <div class="box-container">
+ 
+       <div class="box">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+             <h3>+10k</h3>
+             <p>Online Courses</p>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <i class="fas fa-user-graduate"></i>
+          <div>
+             <h3>+40k</h3>
+             <p>Brilliant Students</p>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <i class="fas fa-chalkboard-user"></i>
+          <div>
+             <h3>+2k</h3>
+             <p>Expert Tutors</p>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <i class="fas fa-briefcase"></i>
+          <div>
+             <h3>100%</h3>
+             <p>Job Placement</p>
+          </div>
+       </div>
+ 
+    </div>
+ 
+ </section> 
+ 
+ <section class="reviews">
+ 
+    <h1 class="heading">Student's Reviews</h1>
+ 
+    <div class="box-container">
+ 
+       <div class="box">
+          <p>As a tech student I'm looking to upskill, I found this website incredibly helpful for learning new tools and techniques in my field. The on-demand courses are great, and I love how I can study at my own pace without pressure.</p> 
+             <div class="student">
+             <img src="{% static 'icons_image/student_image_8.png' %}" alt="">
+             <div>
+                <h3>Vincent John</h3>
+                <div class="stars">
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star-half-alt"></i>
+                </div>
+             </div>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <p>The content is in-depth and to the point. It’s clear a lot of thought went into making it user-friendly. I feel like I’m actually learning and applying new skills in real time.</p>
+             <div class="student">
+             <img src="{% static 'icons_image/student_image_7.png' %}" alt="">
+             <div>
+                <h3>Kritika Mishra</h3>
+                <div class="stars">
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star-half-alt"></i>
+                </div>
+             </div>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <p>I have tried a lot of online platforms, but this one truly stands out. The interface is super easy to navigate, and the interactive learning tools have made my studies so much more engaging.</p>
+                <div class="student">
+             <img src="{% static 'icons_image/student_image_6.png' %}" alt="">
+             <div>
+                <h3>Jay Rao</h3>
+                <div class="stars">
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star-half-alt"></i>
+                </div>
+             </div>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <p>I'm really impressed by the interactive features of this platform. The way it breaks down lessons into smaller chunks makes it easy to focus and retain information.</p>
+                <div class="student">
+             <img src="{% static 'icons_image/student_image_5.png' %}" alt="">
+             <div>
+                <h3>Abhishek Malviya</h3>
+                <div class="stars">
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star-half-alt"></i>
+                </div>
+             </div>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <p>The adaptive learning technology on this site is fantastic! It really adjusts to my pace and challenges me just enough to keep me engaged.</p>
+             <div class="student">
+             <img src="{% static 'icons_image/student_image_4.png' %}" alt="">
+             <div>
+                <h3>john deo</h3>
+                <div class="stars">
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star-half-alt"></i>
+                </div>
+             </div>
+          </div>
+       </div>
+ 
+       <div class="box">
+          <p>I've been using this website for just few days now for my graduate courses, and I am truly impressed with how much it has helped.</p>
+        <div class="student">
+             <img src="{% static 'icons_image/student_image_3.png' %}" alt="">
+             <div>
+                <h3>Zoya Qureshi</h3>
+                <div class="stars">
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star"></i>
+                   <i class="fas fa-star-half-alt"></i>
+                </div>
+             </div>
+          </div>
+       </div>
+ 
+    </div>
+ 
+ </section>
+{% endblock content %}

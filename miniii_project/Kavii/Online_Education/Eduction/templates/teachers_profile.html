@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{%load static %}
+{% block content %}
+<section class="teacher-profile">
+    <h1 class="heading">Profile Details</h1>
+
+    <div class="details">
+        <div class="tutor">
+            <img src="{{ teacher.profile_picture.url }}" alt="Profile Picture">
+            <h3>{{ teacher.name }}</h3>
+            <span>{{ teacher.role }}</span>
+        </div>
+        <div class="flex">
+            <p>Total courses: <span>{{ total_courses }}</span></p>
+            <p>Total videos: <span>{{ total_videos }}</span></p>
+            <p>Total likes: <span>{{ total_likes }}</span></p>
+            <p>Total Views: <span>{{ views }}</span></p>
+        </div>
+    </div>
+</section>
+
+<section class="courses">
+    <h1 class="heading">Our Courses</h1>
+
+    <div class="box-container">
+        {% for course in teacher.courses.all %}
+        <div class="box">
+            <div class="thumb">
+                <img src="{% static 'icons_image/html_01.png' %}" alt="">
+                <span>Lectures</span>
+            </div>
+            <h3 class="title">{{ course.title }}</h3>
+           
+            <a href="{% url 'course_playlist' course.id %}" class="inline-btn">View Playlist</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

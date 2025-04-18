@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+{% block content %}
+<section class="form-container">
+
+    <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       <h3>Register Now</h3>
+       <p>Your Name <span>*</span></p>
+       <input type="text" name="name" placeholder="enter your name" required maxlength="50" class="box">
+       <p>Your Email <span>*</span></p>
+       <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
+       <p>Your Password <span>*</span></p>
+       <input type="password" name="pass" placeholder="enter your password" required maxlength="20" class="box">
+       <p>Confirm Password <span>*</span></p>
+       <input type="password" name="c_pass" placeholder="confirm your password" required maxlength="20" class="box">
+       <p>Select Profile <span>*</span></p>
+       <input type="file" accept="image/*" name="profile_pic" required class="box">
+       <input type="submit" value="Register" name="submit" class="btn">
+    </form>
+ 
+ </section>
+{% endblock content %}

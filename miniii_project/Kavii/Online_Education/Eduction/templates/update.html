@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+
+{% block content %}
+<section class="form-container">
+
+    <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       <h3>Update profile</h3>
+       <p>Update name</p>
+       <input type="text" name="name" value="{{ user.username }}" maxlength="50" class="box">
+       <p>Update email</p>
+       <input type="email" name="email" value="{{ user.email }}" maxlength="50" class="box">
+       <p>Previous password</p>
+       <input type="password" name="old_pass" placeholder="Enter your old password" maxlength="20" class="box">
+       <p>New password</p>
+       <input type="password" name="new_pass" placeholder="Enter your new password" maxlength="20" class="box">
+       <p>Confirm password</p>
+       <input type="password" name="c_pass" placeholder="Confirm your new password" maxlength="20" class="box">
+       <p>Update pic</p>
+       <input type="file" name="profile_pic" accept="image/*" class="box">
+       <input type="submit" value="Update Profile" name="submit" class="btn">
+    </form>
+</section>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "home.html" %}
+
+{% load static %}
+{% block content %}
+<section class="teachers">
+    <h1 class="heading">Expert Teachers</h1>
+
+    <form action="" method="get" class="search-tutor">
+        <input type="text" name="search_box" placeholder="Search tutors..." maxlength="100">
+        <button type="submit" class="fas fa-search" name="search_tutor"></button>
+    </form>
+
+    <div class="box-container">
+        {% for teacher in teachers %}
+        <div class="box">
+            <div class="tutor">
+               {% if teacher.profile_image %}
+                <img src="{{ teacher.profile_image.url }}" alt="{{ teacher.name }}">
+                {% else %}
+                <img src="{% static 'icons_image/profile_icon.jpg' %}" alt="">
+                {% endif %}
+                <div>
+                    <h3>{{ teacher.name }}</h3>
+                    <span>{{ teacher.role }}</span>
+                </div>
+            </div>
+            <p>Total likes: <span>{{ teacher.total_likes }}</span></p>
+           
+            
+            <div class="courses">
+                <h3>Courses by {{ teacher.name }}</h3>
+                {% for course in teacher.courses.all %}
+                <div class="course">
+                    <p>{{ course.title }}</p>
+                   
+                </div>
+                {% endfor %}
+
+            </div>
+            
+            <a href="{% url 'teacher_profile' teacher.id %}" class="inline-btn">View Profile</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

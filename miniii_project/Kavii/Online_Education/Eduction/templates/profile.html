@@ -1,0 +1,64 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="user-profile">
+
+    <h1 class="heading">Your Profile</h1>
+ 
+    <div class="info">
+ 
+       <div class="user">
+        {% if request.user.profile.profile_pic %}
+        <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture">
+        {% else %}
+          <img src="{% static 'icons_image/profile_icon.jpg' %}" alt="">
+          {% endif %}
+          <h3>{{ request.user.username }}</h3>
+          <p>Student</p>
+          <a href="{% url 'update_profile' %}" class="inline-btn">Update Profile</a>
+       </div>
+    
+       <div class="box-container">
+    
+          <div class="box">
+             <div class="flex">
+                <i class="fas fa-bookmark"></i>
+                <div>
+                   <span>4</span>
+                   <p>Saved Playlist</p>
+                </div>
+             </div>
+             <a href="#" class="inline-btn">View Playlists</a>
+          </div>
+    
+          <div class="box">
+             <div class="flex">
+                <i class="fas fa-heart"></i>
+                <div>
+                   <span>33</span>
+                   <p>videos liked</p>
+                </div>
+             </div>
+             <a href="#" class="inline-btn">View Liked</a>
+          </div>
+    
+          <div class="box">
+             <div class="flex">
+                <i class="fas fa-comment"></i>
+                <div>
+                   <span>12</span>
+                   <p>videos comments</p>
+                </div>
+             </div>
+             <a href="#" class="inline-btn">view comments</a>
+          </div>
+    
+       </div>
+    </div>
+ 
+ </section>
+ 
+{% endblock content %}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+{% block header %}
+<header class="header">
+   
+   <section class="flex">
+
+      <a href="/" class="logo"><h1>Start Learning</h1><h3>At Home</h3></a>
+
+      <form action="{% url 'course_search' %}" method="get" class="search-form">
+         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+     </form>
+     
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         {% if user.is_authenticated %}
+         {% if request.user.profile.profile_pic %}
+         <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;">
+     {% else %}
+         <img src="{% static 'icons_image/profile_icon.jpg' %}" alt="" style="width: 80px; height: 80px; object-fit: cover; border-radius: 50%;">
+     {% endif %}
+         <h3 class="name">{{ request.user.username }}</h3>
+         <p class="role">Student</p>
+         <a href="{% url 'profile' %}" class="btn">View Profile</a>
+         {% endif %}
+         <div class="flex-btn">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="option-btn">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="option-btn">Login</a>
+                <a href="{% url 'register' %}" class="option-btn">Register</a>
+            {% endif %}
+        </div>
+        
+      </div>
+
+   </section>
+
+</header>   
+{% endblock header %}
+{% block sidebar %}
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <div class="profile">
+      {% if user.is_authenticated %}
+          {% if request.user.profile.profile_pic %}
+              <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+          {% else %}
+              <img src="{% static 'icons_image/profile_icon.jpg' %}" alt="" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+          {% endif %}
+          <h3 class="name">{{ request.user.username }}</h3>
+          <p class="role">Student</p>
+          <a href="{% url 'profile' %}" class="btn">View Profile</a>
+      {% endif %}
+  </div>
+  
+  
+
+   <nav class="navbar">
+      <a href="{% url 'home' %}"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="{% url 'course' %}"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="{% url 'Teacher' %}"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="{% url 'about' %}"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="{% url 'contact'%}"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+
+</div>
+{% endblock sidebar %}
+{% block content %}
+<section class="home-grid">
+
+   <h1 class="heading">Quick Options</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <h3 class="title">Likes And Comments</h3>
+         <p class="likes">Total Likes : <span>25</span></p>
+         <a href="#" class="inline-btn">View Likes</a>
+         <p class="likes">Total Comments : <span>12</span></p>
+         <a href="#" class="inline-btn">View Comments</a>
+         <p class="likes">Saved Playlists : <span>4</span></p>
+         <a href="#" class="inline-btn">View Playlists</a>
+      </div>
+
+      <div class="box">
+         <h3 class="title">Top Categories</h3>
+         <div class="flex">
+            <a href="#"><i class="fas fa-code"></i><span>Development</span></a>
+            <a href="#"><i class="fas fa-chart-simple"></i><span>Business</span></a>
+            <a href="#"><i class="fas fa-pen"></i><span>Design</span></a>
+            <a href="#"><i class="fas fa-chart-line"></i><span>Marketing</span></a>
+            <a href="#"><i class="fas fa-cog"></i><span>Software</span></a>
+            <a href="#"><i class="fas fa-vial"></i><span>Science</span></a>
+         </div>
+      </div>
+
+      <div class="box">
+         <h3 class="title">Popular Topics</h3>
+         <div class="flex">
+            <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
+            <a href="#"><i class="fab fa-css3"></i><span>CSS</span></a>
+            <a href="#"><i class="fab fa-js"></i><span>javascript</span></a>
+            <a href="#"><i class="fab fa-react"></i><span>MySQL</span></a>
+            <a href="#"><i class="fab fa-php"></i><span>PHP</span></a>
+            <a href="#"><i class="fab fa-bootstrap"></i><span>Bootstrap</span></a>
+            <a href="#"><i class="fab fa-bootstrap"></i><span>ICT tools</span></a>
+
+         </div>
+      </div>
+
+      <div class="box">
+         <h3 class="title">Become a tutor</h3>
+         <p class="tutor">To become an effective tutor, prioritize understanding each student's learning needs. Foster a supportive and engaging environment to enhance their confidence.</p>
+         <a href="teachers.html" class="inline-btn">Get Started</a>
+      </div>
+
+   </div>
+
+</section>
+<section class="courses">
+
+   <h1 class="heading">
+       {% if search_query %}
+           Search Results for "{{ search_query }}"
+       {% else %}
+           Our Courses
+       {% endif %}
+   </h1>
+
+   {% if courses %}
+       <div class="box-container">
+           {% for course in courses %}
+           <div class="box">
+               <div class="tutor">
+                   {% if course.teacher.profile_image %}
+                   <img src="{{ course.teacher.profile_image.url }}" alt="{{ course.teacher.name }}">
+                   {% else %}
+                   <img src="{% static 'icons_image/profile_icon.jpg' %}" alt="">
+                   {% endif %}
+                   <div class="info">
+                       <h3>{{ course.teacher.name }}</h3>
+                       <span>{{ course.teacher.role }}</span>
+                   </div>
+               </div>
+               <div class="thumb">
+                   {% if course.thumbnail %}
+                   <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}">
+                   {% else %}
+                   <img src="{% static 'icons_image/BS_THUMB.png' %}" alt="">
+                   {% endif %}
+                   <span>Lectures</span>
+               </div>
+               <h3 class="title">{{ course.title }}</h3>
+               <a href="{% url 'course_playlist' course.pk %}" class="inline-btn">View Playlist</a>
+           </div>
+           {% endfor %}
+       </div>
+   {% else %}
+       <p>No courses found matching "{{ search_query }}"</p>
+   {% endif %}
+
+</section>
+{% endblock content %}
+
+<!-- custom js file link  -->
+<script src="{% static 'js/script.js' %}"></script>
+
+   
+</body>
+</html>

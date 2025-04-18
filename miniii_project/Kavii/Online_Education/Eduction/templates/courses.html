@@ -1,0 +1,48 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block content %}
+<section class="courses">
+
+    <h1 class="heading">
+        {% if search_query %}
+            Search Results for "{{ search_query }}"
+        {% else %}
+            Our Courses
+        {% endif %}
+    </h1>
+
+    {% if courses %}
+        <div class="box-container">
+            {% for course in courses %}
+            <div class="box">
+                <div class="tutor">
+                    {% if course.teacher.profile_image %}
+                    <img src="{{ course.teacher.profile_image.url }}" alt="{{ course.teacher.name }}">
+                    {% else %}
+                    <img src="{% static 'icons_image/profile_icon.jpg' %}" alt="">
+                    {% endif %}
+                    <div class="info">
+                        <h3>{{ course.teacher.name }}</h3>
+                        <span>{{ course.teacher.role }}</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    {% if course.thumbnail %}
+                    <img src="{{ course.thumbnail.url }}" alt="{{ course.title }}">
+                    {% else %}
+                    <img src="{% static 'icons_image/BS_THUMB.png' %}" alt="">
+                    {% endif %}
+                    <span>Lectures</span>
+                </div>
+                <h3 class="title">{{ course.title }}</h3>
+                <a href="{% url 'course_playlist' course.pk %}" class="inline-btn">View Playlist</a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No courses found matching "{{ search_query }}"</p>
+    {% endif %}
+
+</section>
+{% endblock content %}

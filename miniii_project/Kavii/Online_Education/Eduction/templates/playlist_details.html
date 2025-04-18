@@ -1,0 +1,45 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+<section class="playlist-details">
+    <h1 class="heading">{{ course.title }} - Playlist</h1>
+
+    <div class="row">
+        <div class="column">
+            <form action="" method="post" class="save-playlist">
+                <button type="submit"><i class="far fa-bookmark"></i> <span>Save Playlist</span></button>
+            </form>
+            <div class="thumb">
+                <img src="{{course.thumbnail.url}}" alt="Course Thumbnail">
+                <span>Lectures</span>
+            </div>
+        </div>
+        <div class="column">
+            <div class="details">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+                <a href="{% url 'teacher_profile' course.teacher.pk %}" class="inline-btn">View Teacher Profile</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="playlist-videos">
+    <h1 class="heading">Playlist Videos</h1>
+    <div class="box-container">
+        {% for video in videos %}
+        <a class="box" href="{{ video.video_file.url }}">
+            <i class="fas fa-play"></i>
+            {% if video.thumbnail %}
+            <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
+            {% else %}
+            <img src="{% static 'icons_image/BS_THUMB.png' %}" alt="">
+            {% endif %}
+            <h3>{{ video.title }}</h3>
+        </a>
+        {% empty %}
+        <p>No videos available for this playlist.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
